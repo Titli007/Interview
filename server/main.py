@@ -4,8 +4,18 @@ from config import config
 from typing import List
 import uvicorn
 import json
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+# Allow requests from frontend (React app)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Replace with frontend URL
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all methods (GET, POST, etc.)
+    allow_headers=["*"],  # Allow all headers
+)
 
 @app.get("/quickbooks/profit-and-loss")
 async def read_profit_and_loss():

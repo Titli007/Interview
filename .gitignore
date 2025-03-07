@@ -1,0 +1,4 @@
+test/
+server/__pycache__/
+server/myenv/
+client/
